@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {TextInput} from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-import {loginUser} from '../store/userReducer';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../store/userReducer';
 
 const VentorLogin = () => {
   const Navigation = useNavigation();
@@ -67,7 +67,7 @@ const VentorLogin = () => {
           label="Email"
           mode="outlined"
           value={email}
-          theme={{colors: {text: 'black', primary: '#0a217a'}}}
+          theme={{ colors: { text: 'black', primary: '#0a217a' } }}
           onChangeText={val => setEmail(val)}
         />
       </View>
@@ -80,7 +80,7 @@ const VentorLogin = () => {
           value={password}
           onChangeText={val => setPassword(val)}
           maxLength={15}
-          theme={{colors: {text: 'black', primary: '#0a217a'}}}
+          theme={{ colors: { text: 'black', primary: '#0a217a' } }}
           secureTextEntry={true}
         />
       </View>
@@ -92,13 +92,13 @@ const VentorLogin = () => {
       </View>
 
       <TouchableOpacity style={styles.loginBtn1} onPress={() => userLogin()}>
-        <Text style={{fontWeight: 'bold'}}>LOGIN</Text>
+        <Text style={{ fontWeight: 'bold' }}>LOGIN</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.loginBtn1}
         onPress={() => Navigation.navigate('ventorSignup')}>
-        <Text style={({fontfamily: 'poppins'}, {fontWeight: 'bold'})}>
+        <Text style={({ fontfamily: 'poppins' }, { fontWeight: 'bold' })}>
           SIGNUP
         </Text>
       </TouchableOpacity>
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     shadowColor: '#87C7D8',
     shadowOpacity: 3,
     elevation: 3,
-    shadowOffset: {width: 1, height: 2},
+    shadowOffset: { width: 1, height: 2 },
   },
   googlebtn: {
     width: '80%',
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     shadowOpacity: 3,
     elevation: 3,
-    shadowOffset: {width: 1, height: 5},
+    shadowOffset: { width: 1, height: 5 },
     borderRadius: 25,
   },
   logo1: {

@@ -6,7 +6,6 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
 const VentorSignUp = () => {
-  const [gvalue, setGvalue] = React.useState(null);
   const navigation = useNavigation();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -25,12 +24,10 @@ const VentorSignUp = () => {
         password: password,
         name: name,
         phone: phone,
-        gvalue: gvalue,
         category: 'Vendor',
       }).then(navigation.goBack('MemberLogin'))
       .then({
         setName: setName(null),
-        setGvalue: setGvalue(null),
         setEmail: setEmail(null),
         setPassword: setPassword(null),
         setConfirmPassword: setConfirmPassword(null),
@@ -87,21 +84,6 @@ const VentorSignUp = () => {
             secureTextEntry={true}
             autoCapitalize="none"
           />
-          <RadioButton.Group
-            onValueChange={newValue => setGvalue(newValue)}
-            value={gvalue}>
-            <Text style={styles.gen}>Gender</Text>
-            <View style={styles.radio}>
-              <RadioButton value="hall" />
-              <Text style={styles.lab}>Hall</Text>
-              <RadioButton value="lawn" />
-              <Text style={styles.lab}>Lawn</Text>
-              <RadioButton value="banquet" />
-              <Text style={styles.lab}>Banquet</Text>
-              <RadioButton style={styles.sec} value="caterers" />
-              <Text style={styles.lab}>Caterers</Text>
-            </View>
-          </RadioButton.Group>
           <Button
             style={styles.btn}
             mode="contained"

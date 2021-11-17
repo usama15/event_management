@@ -16,6 +16,9 @@ const AppBar = () => {
     <Appbar.Header theme={{colors: {primary: '#ffbc03'}}}>
       <Appbar.Action icon="menu" />
       <Appbar.Content title='Event Management'/>
+      <Appbar.Action icon="bell" 
+      onPress={() => navigation.navigate('UserOrder')}
+      />
       <Appbar.Action
         icon="logout"
         onPress={async () => {

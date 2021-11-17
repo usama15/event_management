@@ -76,11 +76,11 @@ const Profile = () => {
               <Text style={styles.text}>{userData.email}</Text>
             </View>
             <Divider style={styles.dev} />
-            <View style={styles.NameD}>
-              <Text style={styles.text}>Type</Text>
-              <Text style={styles.text}>{userData.gvalue}</Text>
-            </View>
-            <Divider style={styles.dev} />
+            {/*<View style={styles.NameD}>*/}
+            {/*  <Text style={styles.text}>Type</Text>*/}
+            {/*  <Text style={styles.text}>{userData.gvalue}</Text>*/}
+            {/*</View>*/}
+            {/*<Divider style={styles.dev} />*/}
             <View style={styles.NameD}>
               <Text style={styles.text}>Phone No</Text>
               <Text style={styles.text}>{userData.phone}</Text>

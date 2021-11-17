@@ -8,13 +8,15 @@ import {
   View,
 } from 'react-native';
 import AppBar from './AppBar';
-import {Card} from 'react-native-paper';
+import { Card } from 'react-native-paper';
 import firestore from '@react-native-firebase/firestore';
+import { useSelector } from "react-redux";
 
 const AllPackage = () => {
   const [post, setPost] = React.useState([]);
-
-  React.useEffect( () => {
+  const userData = useSelector(state => state.user.initialState);
+  const user = userData.map(data => (data.name))
+  React.useEffect(() => {
     firestore()
       .collection('products')
       .onSnapshot(snapshot => {
@@ -22,7 +24,7 @@ const AllPackage = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setPost(newPost);
+        setPost(newPost.filter(x => x.username === user));
       });
   }, []);
   return (
@@ -35,14 +37,14 @@ const AllPackage = () => {
               <Image
                 style={styles.img}
                 resizeMode="stretch"
-                source={{uri: post.image}}
+                source={{ uri: post.image }}
               />
               <Text style={styles.text}>Name: {post.name}</Text>
-                <Text style={styles.text1}>Owner Name: {post.username}</Text>
-                <Text style={styles.text1}>Type: {post.catagory}</Text>
-                <Text style={styles.text1}>Contact NO: {post.contactNo}</Text>
-                <Text style={styles.text1}>Rate: {post.price}</Text>
-                <Text style={styles.text1}>Description: {post.description}</Text>
+              <Text style={styles.text1}>Owner Name: {post.username}</Text>
+              <Text style={styles.text1}>Type: {post.catagory}</Text>
+              <Text style={styles.text1}>Contact NO: {post.contactNo}</Text>
+              <Text style={styles.text1}>Rate: {post.price}</Text>
+              <Text style={styles.text1}>Description: {post.description}</Text>
             </Card>
           ))}
         </View>
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
   head: {
     fontSize: 28,
     textAlign: 'center',
-    color:'white',
+    color: 'white',
   },
   img: {
     height: '60%',
@@ -78,11 +80,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 28,
     marginLeft: '5%',
-      color:'black',
+    color: 'black',
   },
   text1: {
     marginLeft: '7%',
-      color:'black',
+    color: 'black',
   },
 });
 export default AllPackage;

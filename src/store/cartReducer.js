@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     cartData: [],
-    // count:[]
 }
 
 const cartReducer = createSlice({
@@ -25,16 +24,14 @@ const cartReducer = createSlice({
         },
 
         removeFromCart:(state, {payload}) => {
-            let {cartData} = state.initialState
-            cartData = cartData.filter(data => action.payload !== data.id)
+           state.initialState.cartData = []
         },
 
-        // getCount:(state, {payload}) => {
-        //     let {} = state.initialState
-        // }
+
     },
 });
 
 
 export default cartReducer.reducer;
 export const {addToCart} = cartReducer.actions;
+export const {removeFromCart} = cartReducer.actions;
