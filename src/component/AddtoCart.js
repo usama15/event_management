@@ -7,7 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 import CalendarPicker from 'react-native-calendar-picker';
 import { removeFromCart } from "../store/cartReducer";
 import { useNavigation } from '@react-navigation/native';
-import { Modal, Portal, Provider } from 'react-native-paper';
+import { Modal, Portal, Provider, IconButton, Colors } from 'react-native-paper';
 
 const AddtoCart = () => {
   const Navigation = useNavigation();
@@ -69,6 +69,16 @@ const AddtoCart = () => {
     CheckOut()
     hideModal()
   }
+  const DelCart = () => {
+    firestore()
+      .collection('rate')
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          doc.ref.delete();
+        })
+      }).then(dispatch(removeFromCart()))
+  }
   return (
     <Provider>
       <SafeAreaView>
@@ -86,7 +96,13 @@ const AddtoCart = () => {
                   <TextInput mode='outlined' label='PerHead' style={styles.count_text} keyboardType='numeric' onChangeText={value => setCount(value, cartData[0].id)} />
                 </View>
                 <View style={styles.btn_count}>
-                  <Button style={{ backgroundColor: '#ffbc03', marginBottom:'30%',}} mode='contained' onPress={() => TotalSum(cartData[0].price, cartData[0].id, cartData[0].image, cartData[0].name, cartData[0].contactNo)}>Add</Button>
+                  <IconButton
+                    icon="delete"
+                    color={Colors.black}
+                    size={27}
+                    onPress={() => DelCart()}
+                  />
+                  <Button style={{ backgroundColor: '#ffbc03', marginBottom: '20%', }} mode='contained' onPress={() => TotalSum(cartData[0].price, cartData[0].id, cartData[0].image, cartData[0].name, cartData[0].contactNo)}>Add</Button>
                   {totalCount.map(data => data.id == cartData[0].id ? (
                     <Text style={{ color: 'black', }}>Total:{data.TotalPrice}</Text>
                   ) : null)}
@@ -144,7 +160,6 @@ const styles = StyleSheet.create({
     marginLeft: '5%',
   },
   btn_count: {
-    marginTop:'5%',
     color: 'black',
     width: '13%',
 
