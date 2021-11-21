@@ -8,6 +8,7 @@ const Home = () => {
   return (
     <SafeAreaView>
       <ScrollView style={styles.container}>
+        <View style={{backgroundColor:'#2292d4', height:900,}}>
         <View>
           <Image resizeMode='center' style={styles.img} source={require('../assets/WhatsApp_Image_2021-10-11_at_9.31.22_PM-removebg-preview.png')}/>
         </View>
@@ -29,6 +30,7 @@ const Home = () => {
               Member Login
             </Button>
           </View>
+        </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
   },
   card: {
     borderRadius: 10,
-    backgroundColor: '#ffbc03',
+    // backgroundColor: '#ffbc03',
     width: '90%',
     height: 300,
     alignSelf: 'center',

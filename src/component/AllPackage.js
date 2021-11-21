@@ -24,9 +24,10 @@ const AllPackage = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setPost(newPost.filter(x => x.username === user));
+        setPost(newPost.filter(x => x.username == user));
       });
   }, []);
+  console.log(user)
   return (
     <SafeAreaView>
       <ScrollView>

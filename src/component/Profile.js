@@ -10,7 +10,6 @@ import {useNavigation} from '@react-navigation/native';
 const Profile = () => {
   const navigation = useNavigation();
   const userData = useSelector(state => state.user.initialState);
-  const ventorData = useSelector(state => state.user.initialState);
   return (
     <SafeAreaView>
       <ScrollView>
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
     marginTop: '10%',
     width: '40%',
     alignSelf: 'center',
-    backgroundColor:'#ffbc03',
+    backgroundColor:'#2292d4',
   },
 });
 

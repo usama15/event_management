@@ -23,13 +23,14 @@ const AddtoCart = () => {
   const hideModal = () => setVisible(false);
   const containerStyle = { backgroundColor: 'white', padding: 20 };
 
-  const TotalSum = (price, id, image, name, contactNo) => {
+  const TotalSum = (price, id, image, name, contactNo,useremail) => {
     setDisbale(false)
     const newPrice = price * count
     firestore().collection('rate').doc(id).set({
       price: price,
       id: id,
       name: name,
+      email:useremail,
       image: image,
       TotalPrice: newPrice,
       contact: contactNo,
@@ -77,7 +78,7 @@ const AddtoCart = () => {
         querySnapshot.forEach((doc) => {
           doc.ref.delete();
         })
-      }).then(dispatch(removeFromCart()))
+      }).then(dispatch(removeFromCart())).then(setDisbale(true))
   }
   return (
     <Provider>
@@ -92,7 +93,12 @@ const AddtoCart = () => {
                 <View style={{ width: '50%', }}>
                   <Text style={styles.text}>Name: {cartData[0].name}</Text>
                   <Text style={styles.text}>Price: {cartData[0].price}</Text>
-                  <Text style={styles.text}>Phone No: {cartData[0].contactNo}</Text>
+                  <View style={{flexDirection:'row'}}>
+                  <Text style={styles.text}>Total:</Text>
+                  {totalCount.map(data => data.id == cartData[0].id ? (
+                    <Text style={styles.text}>{data.TotalPrice}</Text>
+                  ) : null)}
+                  </View>
                   <TextInput mode='outlined' label='PerHead' style={styles.count_text} keyboardType='numeric' onChangeText={value => setCount(value, cartData[0].id)} />
                 </View>
                 <View style={styles.btn_count}>
@@ -102,10 +108,7 @@ const AddtoCart = () => {
                     size={27}
                     onPress={() => DelCart()}
                   />
-                  <Button style={{ backgroundColor: '#ffbc03', marginBottom: '20%', }} mode='contained' onPress={() => TotalSum(cartData[0].price, cartData[0].id, cartData[0].image, cartData[0].name, cartData[0].contactNo)}>Add</Button>
-                  {totalCount.map(data => data.id == cartData[0].id ? (
-                    <Text style={{ color: 'black', }}>Total:{data.TotalPrice}</Text>
-                  ) : null)}
+                  <Button style={{ backgroundColor: '#ffbc03', marginTop: '50%', }} mode='contained' onPress={() => TotalSum(cartData[0].price, cartData[0].id, cartData[0].image, cartData[0].name, cartData[0].contactNo, cartData[0].useremail)}>Add</Button>
                 </View>
               </View>
             ) : <Text style={styles.text}>NO data in Cart</Text>}
@@ -171,7 +174,7 @@ const styles = StyleSheet.create({
   },
 
   btn: {
-    backgroundColor: '#ffbc03',
+    backgroundColor: '#2292d4',
     color: 'black',
   }
 })

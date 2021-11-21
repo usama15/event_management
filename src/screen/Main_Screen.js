@@ -19,7 +19,7 @@ const Main_Screen = () => {
             source={require('../assets/WhatsApp_Image_2021-10-11_at_9.31.22_PM-removebg-preview.png')}
           />
           <View style={styles.secondText}>
-            <ActivityIndicator size="large" color="#ffbc03" />
+            <ActivityIndicator size="large" color="#2292d4" />
           </View>
         </View>
       </ScrollView>

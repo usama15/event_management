@@ -3,10 +3,12 @@ import { SafeAreaView, ScrollView, View, Text, Image, StyleSheet } from "react-n
 import AppBar from "./AppBar";
 import firestore from '@react-native-firebase/firestore';
 import { Card } from "react-native-paper";
+import { useSelector } from "react-redux";
 
 
 const Order = () => {
   const [post, setPost] = React.useState([]);
+    const userData = useSelector(state => state.user.initialState);
   React.useEffect(() => {
     firestore().collection('Order').onSnapshot(snapshot => {
       const newPost = snapshot.docs.map(doc => ({
@@ -16,20 +18,22 @@ const Order = () => {
       setPost(newPost);
     });
   }, [])
+  console.log(post)
   return (
     <SafeAreaView>
       <AppBar />
       <ScrollView>
         <View style={{ marginBottom: '20%', }}>
           {post.map(data => (
+             data.data[0].email === userData[0].email ?
             <Card style={styles.card}>
               <Text style={styles.text}>Name: {data.data[0].user}</Text>
               <Text style={styles.text1}>User Email: {data.data[0].userEmail}</Text>
-              <Text style={styles.text1}>Hall Name: {data.data[0].name}</Text>
+              <Text style={styles.text1}>Product Name: {data.data[0].name}</Text>
               <Text style={styles.text1}>Contact No: {data.data[0].userPhone}</Text>
               <Text style={styles.text1}>Rate: {data.data[0].price}</Text>
               <Text style={styles.text1}>Total Rate: {data.data[0].TotalPrice}</Text>
-            </Card>
+            </Card>:null
           ))}
         </View>
       </ScrollView>

@@ -95,13 +95,12 @@ const VentorLogin = () => {
         <Text style={{ fontWeight: 'bold' }}>LOGIN</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.loginBtn1}
-        onPress={() => Navigation.navigate('ventorSignup')}>
-        <Text style={({ fontfamily: 'poppins' }, { fontWeight: 'bold' })}>
+      <View style={styles.signupbtn}>
+        <Text style={{ marginRight: '1%',color:'black', }}>Don't have account?</Text>
+        <Text onPress={() => Navigation.navigate('ventorSignup')} style={({ fontfamily: 'poppins' }, { fontWeight: 'bold', color:'black', })}>
           SIGNUP
         </Text>
-      </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -196,7 +195,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 20,
     shadowRadius: 10,
-    backgroundColor: '#ffbc03',
+    backgroundColor: '#2292d4',
     shadowColor: '#87C7D8',
     shadowOpacity: 3,
     elevation: 3,
@@ -214,10 +213,15 @@ const styles = StyleSheet.create({
   logo1: {
     fontWeight: 'bold',
     fontSize: 50,
-    color: '#ffbc03',
+    color: '#2292d4',
     marginBottom: 40,
     fontFamily: 'San Francisco',
     shadowColor: '#D49A9A',
+  },
+  signupbtn: {
+    flexDirection: 'row',
+    marginTop: '7%',
+
   },
 });
 

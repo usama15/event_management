@@ -31,7 +31,7 @@ const UserOrder = () => {
               <Text style={styles.text}>Name: {data.data[0].user}</Text>
               <Text style={styles.text1}>User Email: {data.data[0].userEmail}</Text>
               <Text style={styles.text1}>Date: {data.date}</Text>
-              <Text style={styles.text1}>Hall Name: {data.data[0].name}</Text>
+              <Text style={styles.text1}>Product Name: {data.data[0].name}</Text>
               <Text style={styles.text1}>Contact No: {data.data[0].userPhone}</Text>
               <Text style={styles.text1}>Rate: {data.data[0].price}</Text>
               <Text style={styles.text1}>Total Rate: {data.data[0].TotalPrice}</Text>

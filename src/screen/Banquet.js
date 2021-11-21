@@ -27,6 +27,7 @@ const Banquet = () => {
         setPost(newPost.filter(x => x.catagory == 'Banquet'));
       });
   }, []);
+  console.log(post)
   return (
     <SafeAreaView>
       <ScrollView>
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
   btn:{
     width: '50%',
     alignSelf:'center',
-    backgroundColor:'#ffbc03',
+    backgroundColor:'#2292d4',
     marginTop:'5%',
   }
 });

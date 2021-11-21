@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   btn:{
     width: '50%',
     alignSelf:'center',
-    backgroundColor:'#ffbc03',
+    backgroundColor:'#2292d4',
     marginTop:'5%',
   }
 });

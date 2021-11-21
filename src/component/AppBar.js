@@ -13,12 +13,11 @@ const AppBar = () => {
   const dispatch = useDispatch();
 
   return (
-    <Appbar.Header theme={{colors: {primary: '#ffbc03'}}}>
-      <Appbar.Action icon="menu" />
-      <Appbar.Content title='Event Management'/>
-      <Appbar.Action icon="bell" 
+    <Appbar.Header theme={{colors: {primary: '#2292d4'}}}>
+      <Appbar.Action icon="shopping" 
       onPress={() => navigation.navigate('UserOrder')}
       />
+      <Appbar.Content title='Event Management'/>
       <Appbar.Action
         icon="logout"
         onPress={async () => {

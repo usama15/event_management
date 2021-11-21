@@ -101,7 +101,7 @@ const MemberSignUp = () => {
           <Button
             style={styles.btn}
             mode="contained"
-            theme={{colors: {primary: '#ffbc03'}}}
+            theme={{colors: {primary: '#2292d4'}}}
             onPress={() => submit()}>
             Finish
           </Button>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   lab: {
     marginTop: '2%',
-    color: '#ffbc03',
+    color: '#2292d4',
   },
   gen: {
     marginHorizontal: '8%',
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 42,
     fontWeight: 'bold',
-    color: '#ffbc03',
+    color: '#2292d4',
     textAlign: 'center',
     marginTop: '10%',
     marginBottom: '5%',

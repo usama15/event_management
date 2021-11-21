@@ -10,7 +10,7 @@ export default function BottomNav() {
   const Tab = createMaterialBottomTabNavigator();
   return (
     <Tab.Navigator
-      activeColor="#ffbc03"
+      activeColor="#2292d4"
       initialRouteName="MainScreen"
       barStyle={{backgroundColor: 'black'}}>
       <Tab.Screen
